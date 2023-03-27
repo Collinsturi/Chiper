@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thmyleaf.org"
+      layout:decorate="~{layout-sidebar}">
+<head>
+    <meta charset="UTF-8">
+    <title>Deposit</title>
+
+    <style>
+        .card-payments{
+             height: 600px;
+             width: 800px;
+        }
+    </style>
+</head>
+<body id="body-pd" layout:fragment="sidebar-body">
+
+<div class="container d-flex align-items-center justify-content-center ">
+    <div class="row ">
+        <div class="col-sm-6">
+            <div class="card card-payments">
+                <div class="card-body mt-3">
+                    <h5 class="card-title">Deposit Money</h5>
+                    <p class="card-text"><h1>Transfer Cash from M-Pesa to Bank Account</h1>
+                    <p>To transfer cash from your M-Pesa account to your bank account, follow these steps:</p>
+                    <ol>
+                        <li>Dial *234# on your mobile phone and select "M-Pesa"</li>
+                        <li>Select "Lipa na M-Pesa"</li>
+                        <li>Select "Pay Bill"</li>
+                        <li>Enter the Business Number for your bank. </li>
+                        <ul>
+                            <li>For Chiper Bank, enter 369369</li>
+
+                        </ul>
+                        <li>Enter your bank account number as the account number</li>
+                        <li>Enter the amount you want to transfer</li>
+                        <li>Enter your M-Pesa PIN</li>
+                        <li>Confirm the transaction</li>
+                        <li>You will receive a confirmation message from M-Pesa and your bank</li>
+                    </ol>
+                    <p>If you have any questions or issues with the transfer, please contact your bank's customer support.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

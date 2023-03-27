@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://thmyleaf.org"
+        layout:decorate="~{layout-sidebar}">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/payment.css" rel="stylesheet" />
+    <title>Payment</title>
+</head>
+<body id="body-pd" layout:fragment="sidebar-body">
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Money Transfer</h5>
+                    <p class="card-text">Transfer money to another person</p>
+                    <a th:href="@{/user/account/transfer}" class="btn btn-primary">Transfer</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Transfer to Mpesa</h5>
+                    <p class="card-text">Transfer money to an Mpesa account</p>
+                    <a th:href="@{/user/account/transfer-to-mpesa}" class="btn btn-primary">Transfer to Mpesa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Payment Estatement</h5>
+                    <p class="card-text">Get your payment's transactions for this month</p>
+                    <a th:href="@{/user/account/get-Estatement}" class="btn btn-primary">get E-statement</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

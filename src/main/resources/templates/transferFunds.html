@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thmyleaf.org"
+      layout:decorate="~{layout-sidebar}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/login.css">
+    <title>Transfer Funds</title>
+</head>
+<body id="body-pd" layout:fragment="sidebar-body">
+<div class="container mt-3">
+    <div class="main">
+        <p class="sign" align="center">Transfer Funds</p>
+        <form class="form1" role="form"  method="post" th:action="@{/user/account/transfer}" th:object="${transferFundsDto}">
+            <input class="un form-control" name="acc-no" type="text" align="center"  th:field="*{destinationAccountNumber}" placeholder="Destination Account Number">
+            <input class="un form-control" name="receiver-name" type="text" align="center" th:field="*{receiveName}" placeholder="Receiver Name">
+            <input class="un form-control" name="note" type="text" align="center" th:field="*{note}" placeholder="Note">
+
+            <button class="submit" align="center">Transfer</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

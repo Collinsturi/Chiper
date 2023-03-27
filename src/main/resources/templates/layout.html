@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thmyleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <!--This has the top navbar-->
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Chiper</title>
+</head>
+<nav class="nav-bar">
+    <img src="./images/logo.png" alt="" />
+    <div class="nav-items justify-content-end">
+        <a th:href="@{/index}">Home</a>
+        <a href="#about">About</a>
+        <a href="#footer">Contact</a>
+        <a href="#blog">Blog</a>
+        <a th:href="@{/user/login}">Log in</a>
+    </div>
+</nav>
+<body layout:fragment="body"></body>
+<footer class="footer" id="footer">
+    <div class="footer-container">
+        <div class="social-container">
+            <img src="./images/icon-facebook.svg" alt="" />
+            <img src="./images/icon-instagram.svg" alt="" />
+            <img src="./images/icon-twitter.svg" alt="" />
+            <img src="./images/icon-pinterest.svg" alt="" />
+        </div>
+        <div class="menu">
+            <a href="#">About us</a>
+            <a href="#">Contact us</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="menu">
+            <a href="#">Carriers</a>
+            <a href="#">Support</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <button>Request Invite</button>
+    </div>
+</footer>
+</html>

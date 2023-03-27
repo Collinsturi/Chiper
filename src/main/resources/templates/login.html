@@ -1,0 +1,27 @@
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://thmyleaf.org"
+        layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/login.css">
+  <title>User Login</title>
+</head>
+<body layout:fragment="body">
+<section >
+  <div class="container mt-3">
+    <div class="main">
+      <p class="sign" align="center">Sign in</p>
+      <form class="form1" role="form" method="post" th:action="@{/user/login}" th:object="${customer}">
+        <input class="un form-control" name="email" type="email" align="center"  th:field="*{email}" placeholder="Email">
+        <input class="pass form-control" name="password" type="password" align="center" th:field="*{password}" placeholder="Password">
+        <button class="submit" align="center">Sign in</button>
+        <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+
