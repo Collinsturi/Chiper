@@ -5,17 +5,16 @@ import com.chipin.Chiper.sevice.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+
 import java.util.Objects;
 import java.util.Optional;
-import java.util.logging.Logger;
+
 
 @Controller
 public class CustomerController {
@@ -33,7 +32,7 @@ public class CustomerController {
 
 
     @PostMapping("/user/login")
-    public String login(@ModelAttribute("customer") Customer customer, Authentication authentication) {
+    public String login(@ModelAttribute("customer") Customer customer, Authentication authentication, Model model) {
         Optional<Customer> customersMatching = customerService.login(customer);
 
         try {
@@ -46,6 +45,7 @@ public class CustomerController {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 return "userPage";
             }
+            model.addAttribute("errorMessage", "Invalid email or password");
 
             return "login";
         } catch (Exception e) {

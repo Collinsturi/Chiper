@@ -18,6 +18,9 @@
         <input class="pass form-control" name="password" type="password" align="center" th:field="*{password}" placeholder="Password">
         <button class="submit" align="center">Sign in</button>
         <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+          <p th:text="${errorMessage}"></p>
+        </div>
       </form>
     </div>
   </div>
