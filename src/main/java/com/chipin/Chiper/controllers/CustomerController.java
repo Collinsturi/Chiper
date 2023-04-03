@@ -1,5 +1,7 @@
 package com.chipin.Chiper.controllers;
 
+import com.chipin.Chiper.dto.ExchangeRateResponse;
+import com.chipin.Chiper.dto.MpesaTransferDto;
 import com.chipin.Chiper.models.Customer;
 import com.chipin.Chiper.sevice.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -92,8 +95,11 @@ public class CustomerController {
         return "settings";
     }
 
+
     @GetMapping("/user/exchanges")
     public String getExchanges(Model model){
+        Map<String, Double> exchangeRates = customerService.getExchangeRates();
+        model.addAttribute("exchangeRates", exchangeRates);
 
         return "exchanges";
     }
@@ -104,17 +110,37 @@ public class CustomerController {
 
         return "transferFundsToMpesa";
     }
+
+    private MpesaTransferDto mpesaTransferDto = new MpesaTransferDto();
+    @PostMapping("/user/account/transfer-to-mpesa")
+    public String transferFundsToMpesaGetDetails(@ModelAttribute("MpesaTransfer") MpesaTransferDto mpesaTransfer){
+        customerService.addToMpesaTransferQueue(mpesaTransfer);
+        mpesaTransferDto.setAmount(mpesaTransfer.getAmount());
+        mpesaTransferDto.setNote(mpesaTransfer.getNote());
+        mpesaTransferDto.setPhoneNumber(mpesaTransferDto.getPhoneNumber());
+
+        return "redirect:/user/account/transfer-to-mpesa/Confirmation";
+    }
+
+    @GetMapping("/user/account/transfer-to-mpesa/Confirmation")
+    public String mpesaConfirmation(Model model){
+        MpesaTransferDto returnedValue = customerService.getConfirmation(mpesaTransferDto);
+
+        model.addAttribute("mpesaTranfer", returnedValue);
+
+        return "transferFundsToMpesa-Confirmation";
+    }
     @GetMapping("/user/account/get-Estatement")
     public String getEstatement(Model model){
 
         return "estatement";
     }
 
-//    @GetMapping("/error")
-//    public String errorMessage(Model model){
-//
-//        return "error";
-//    }
+   @GetMapping("/error")
+    public String errorMessage(Model model){
+
+        return "error";
+    }
 
 
 
